@@ -1,0 +1,34 @@
+extends unregistered_layout
+
+block content
+	if Photoerror
+		div(class="alert alert-danger") #{Photoerror}
+	h1 Register
+	.bg-dark.p-4
+		form(method='POST', action='/users/register' enctype="multipart/form-data")
+			#form-group
+				label Name*:
+				input.form-control(name="name", type='text')
+			#form-group
+				label Email*:
+				input.form-control(name="email", type='text')
+			#form-group
+				label Contact Number*:
+				input.form-control(name="contact", type='text')
+			#form-group
+				label Username*:
+				input.form-control(name="username", type='text')
+			#form-group
+				label Password*:
+				input.form-control(name="password", type='password')
+			#form-group
+				label Confirm Password*:
+				input.form-control(name="password2", type='password')
+			.form-group
+				label Profile Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			//- .row
+			//- 	.col-sm-12
+			//- 		.preview-images
+			br
+			input.btn.btn-primary(type='submit',value='Submit')

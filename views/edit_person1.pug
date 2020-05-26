@@ -1,0 +1,21 @@
+extends layout
+
+block header
+	#AMP_header
+		h1(style="display:table-cell;text-align: center").align-middle Hi #{user.name}
+
+block content
+	h4.bg-info(style="color:white") You have Added #{user.MissingPerson} Missing Person Records. Click to Edit!
+	- var n = person.length -1;
+	.bg-light.p-4
+		ul.list-group
+			while n >= 0
+				-var y = person.length -n;
+				a(href="/person/edit/"+person[n]._id)#person_list
+					li.list-group-item.d-flex.justify-content-between.align-items-center
+						|#{y}.  #{person[n].Name}
+						if person[n].CurrentStatus == "found"
+							span.badge.badge-success.badge-pill Found
+						else
+							span.badge.badge-danger.badge-pill Missing
+				-var n = n-1;

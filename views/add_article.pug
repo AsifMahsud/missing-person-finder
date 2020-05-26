@@ -1,0 +1,25 @@
+extends layout
+
+block header
+	#article_header
+		h1(style="display:table-cell;text-align: center").align-middle Add Article
+
+block content
+	h1 #{title}
+	.bg-light.p-4
+		form(method='POST', action='/articles/add' enctype="multipart/form-data")
+			#form-group
+				label Title:
+				input.form-control(name="title", type='text')
+			#form-group
+				label Body:
+				textarea.form-control(name="body")
+			.form-group
+				label Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			.row
+				.col-sm-12
+					.preview-images
+						img#Profile_Image
+			br
+			input.btn.btn-primary(type='submit',value='Submit')

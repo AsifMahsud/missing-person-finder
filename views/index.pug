@@ -1,0 +1,148 @@
+extends layout
+block header
+	.carousel.slide(data-ride='carousel')
+		.carousel-inner
+			.carousel-item.active
+				img.d-block.w-100(src='../mpf/happy3.webp', alt='...')
+			.carousel-item
+				img.d-block.w-100(src='../mpf/happy1.webp', alt='...')
+			.carousel-item
+				img.d-block.w-100(src='../mpf/happy2.webp', alt='...')
+			section.align-middle.search-sec
+				.container
+					form(action='/person/person_search/', method='post', novalidate='novalidate')
+						.row
+							.col-lg-12
+								.row
+									.col-lg-3.col-md-3.col-sm-12
+										input.form-control.search-slt(type='text', placeholder='Name' name="name")
+									.col-lg-3.col-md-3.col-sm-12
+										input.form-control.search-slt(type='text', placeholder='Country' name="country")
+									.col-lg-3.col-md-3.col-sm-12
+										select.form-control.search-slt(name="gender")
+											option(value="gender" selected) Gender
+											option(value="male") Male
+											option(value="female") Female
+									.col-lg-3.col-md-3.col-sm-12.p-0
+											button.btn.btn-primary.wrn-btn(type='submit' ) Search
+
+block content
+	- var n = person.length -1;
+	h2 Missing Person
+	.bg-light.p-4
+		br
+		.card-deck
+			.row
+				if n < 4
+					while n >= 0
+						.card.bg-dark
+								span.badge.badge-pill.badge-danger#lastest_item Recent
+								if person[n].Image==undefined
+									if person[n].Gender=="male"
+										img.card-img-top(src='/mpf/missing_male.jpg', alt=person[n].Name)
+									else
+										img.card-img-top(src='/mpf/missing_female.png', alt=person[n].Name)
+								else
+									img.card-img-top(src='/uploads/missing/'+person[n].Image, alt=person[n].Name)
+								.card-body
+									h5.card-title=person[n].Name
+									ul.list-group.list-group-flush.myList
+										li.list-group-item.bg-dark.text-light Gender: #{person[n].Gender}
+										li.list-group-item.bg-dark.text-light Age: #{person[n].Age}
+										li.list-group-item.bg-dark.text-light Skin: #{person[n].SkinColor}
+										li.list-group-item.bg-dark.text-light Status: 
+											if person[n].CurrentStatus == "missing"
+												span.badge.badge-warning Missing
+											else
+												span.badge.badge-success Found	
+								.card-footer.bg-light
+									a(href="/person/"+person[n]._id style="color:white").btn.btn-primary
+										span.fa.fa-search
+										|  INVESTIGATE
+						-var n=n-1;
+				if n > 11
+					while person.length -13 < n
+						.col-sm-12.col-md-6.col-lg-4.col-xl-3.mb-4
+							.card.bg-dark
+								if n > person.length -5
+									span.badge.badge-pill.badge-danger#lastest_item Recent
+								if person[n].Image==undefined
+									if person[n].Gender=="male"
+										img.card-img-top(src='/mpf/missing_male.jpg', alt=person[n].Name)
+									else
+										img.card-img-top(src='/mpf/missing_female.png', alt=person[n].Name)
+								else
+									img.card-img-top(src='/uploads/missing/'+person[n].Image, alt=person[n].Name)
+								.card-body
+									h5.card-title=person[n].Name
+									ul.list-group.list-group-flush.myList
+										li.list-group-item.bg-dark.text-light Gender: #{person[n].Gender}
+										li.list-group-item.bg-dark.text-light Age: #{person[n].Age}
+										li.list-group-item.bg-dark.text-light Skin: #{person[n].SkinColor}
+										li.list-group-item.bg-dark.text-light Status: 
+											if person[n].CurrentStatus == "missing"
+												span.badge.badge-warning Missing
+											else
+												span.badge.badge-success Found	
+								.card-footer.bg-light
+									a(href="/person/"+person[n]._id style="color:white").btn.btn-primary
+										span.fa.fa-search
+										|  INVESTIGATE
+						-var n=n-1;
+				else
+					while n >= 0
+						.col-sm-12.col-md-6.col-lg-4.col-xl-3.mb-4
+							.card.bg-dark
+								if n > person.length -5
+									span.badge.badge-pill.badge-danger#lastest_item Recent
+								if person[n].Image==undefined
+									if person[n].Gender=="male"
+										img.card-img-top(src='/mpf/missing_male.jpg', alt=person[n].Name)
+									else
+										img.card-img-top(src='/mpf/missing_female.png', alt=person[n].Name)
+								else
+									img.card-img-top(src='/uploads/missing/'+person[n].Image, alt=person[n].Name)
+								.card-body
+									h5.card-title=person[n].Name
+									ul.list-group.list-group-flush.myList
+										li.list-group-item.bg-dark.text-light Gender: #{person[n].Gender}
+										li.list-group-item.bg-dark.text-light Age: #{person[n].Age}
+										li.list-group-item.bg-dark.text-light Skin: #{person[n].SkinColor}
+										li.list-group-item.bg-dark.text-light Status: 
+											if person[n].CurrentStatus == "missing"
+												span.badge.badge-warning Missing
+											else
+												span.badge.badge-success Found	
+								.card-footer.bg-light
+									a(href="/person/"+person[n]._id style="color:white").btn.btn-primary
+										span.fa.fa-search
+										|  INVESTIGATE
+						-var n=n-1;
+		br
+		hr
+	br
+	br
+	h2 Articles
+	-var art = articles.length -1;
+	.bg-light.p-4
+		ul.list-group
+			if art < 10
+				while art >=0
+					if art > articles.length-3
+						li.list-group-item.bg-dark.text-light
+							a(href='/articles/'+articles[art]._id).text-light= articles[art].title
+								span.badge.badge-pill.badge-info#lastest_item Latest
+					else
+						li.list-group-item.bg-dark.text-light
+							a(href='/articles/'+articles[art]._id).text-light= articles[art].title
+					-var art = art-1;
+			else
+				while articles.length -11 <art
+					if art > articles.length-3
+						li.list-group-item.bg-dark.text-light
+							a(href='/articles/'+articles[art]._id).text-light= articles[art].title
+								span.badge.badge-pill.badge-info#lastest_item Latest
+					else
+						li.list-group-item.bg-dark.text-light
+							a(href='/articles/'+articles[art]._id).text-light= articles[art].title
+					-var art = art-1;

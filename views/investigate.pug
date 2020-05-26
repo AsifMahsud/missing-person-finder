@@ -1,0 +1,87 @@
+extends layout
+
+block header
+	#Investigate_Header
+		h1(style="display:table-cell;text-align: center").align-middle Investigate
+
+block content
+	.bg-light.p-4
+		if person.Image == null
+			if person.Gender == "male"
+				img(src="/mpf/male.jpg" style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+			else
+				img(src="/mpf/female.png" style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+		else
+			img(src="/uploads/missing/"+person.Image style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+		br
+		h2.text-center= person.Name
+		br
+		table.table.table-hover.table-dark
+			tbody
+				tr
+					td Name
+					td(colspan="2")= person.Name
+				tr
+					td Gender
+					td(colspan="2")= person.Gender
+				tr
+					td Mental Status
+					td(colspan="2")= person.MentalStatus
+				tr
+					td Body Type
+					td(colspan="2")= person.Body
+				tr
+					td Age
+					td(colspan="2")= person.Age
+				tr
+					td Weight
+					td(colspan="2")= person.Weight
+				tr
+					td Height
+					td(colspan="2")= person.Height
+				tr
+					td Skin Color
+					td(colspan="2")= person.SkinColor
+				tr
+					td Eye Color
+					td(colspan="2")= person.EyeColor
+				tr
+					td Hair
+					td(colspan="2")= person.Hair
+				tr
+					td Country
+					td(colspan="2")= person.Country
+				tr
+					td City
+					td(colspan="2")= person.City
+				tr
+					td Current Status
+					td(colspan="2")= person.CurrentStatus
+		table.table.table-hover.table-dark
+			tbody
+				tr
+					td Description
+					td(colspan="2")= person.Description
+
+		h4.bg-info(style="color:white") Do you have any information about #{person.Name} ?
+		h4.bg-info(style="color:white") Yes? It would greatly help #{user1.name} in the Search, Contact #{user1.name}.
+		if user1.file == null
+			img(src="/mpf/logo.png" style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+		else
+			img(src="/uploads/"+user1.file style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+		br
+		table.table.table-hover.table-dark
+			tbody
+				tr
+					td Name
+					td(colspan="2")= user1.name
+		table.table.table-hover.table-primary
+			tbody
+				tr
+					td Phone
+					td(colspan="2")
+						a(href="tel:"+user1.contact) Click to Call Now
+				tr
+					td Email
+					td(colspan="2")
+						a(href="mailto: "+user1.email  target="_blank") Click to Send Mail Now

@@ -1,0 +1,200 @@
+.alert-error{
+	color: #a94442;
+	background-color: #f2dede;
+	border-color:#edccd1;
+}
+ div.preview-images > img {
+        width: 30%;
+      }
+.bg1{
+	/*background:transparent url('../mpf/missing_person.jpg') no-repeat center center /cover;*/
+	background:transparent url('../mpf/register_bg.webp') no-repeat center center /cover;
+}
+.bg4{
+    background:transparent url('../mpf/bg4.webp') no-repeat center center /cover;
+}
+footer {
+  width: 100%;
+  background-color:#007bff;
+  color: #0E0B16;
+  margin-top:50px;
+  text-align: center;
+}
+#page_container h1,#page_container label,#page_container h2,#page_container h3,#page_container h4,#page_container h5,#page_container h6{
+	color:#007bff;
+}
+#page_container a{
+	color:black;
+}
+#input-files{
+	background-color: white;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(14, 11, 22,0.5);
+    opacity: .7;
+}
+#header{
+	z-index:-1;
+	margin-top:-30px;
+}
+.navbar{
+	font-weight: bold !important;
+}
+#page_container{
+	min-height: 100vh;
+	padding-top:5vh;
+}
+#Profile_header{
+	background:transparent url('../mpf/bg2.webp') no-repeat center center /cover;
+	width:100%;
+	height:50vh;
+	color:white;
+	display: table
+}
+#AMP_header{
+	background:transparent url('../mpf/bg3.webp') no-repeat center center /cover;
+	width:100%;
+	height:50vh;
+	color:white;
+	display: table
+}
+.card-img-top{
+	height: 200px
+}
+.myList li{
+padding-left:0 !important;
+padding-right: 0 !important;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.card{
+	
+}
+#lastest_item{
+	position: absolute;
+    right:5px;
+    top:10px;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color:white;
+    padding:5px 10px;
+    font-size:20px;
+}
+#person_list{
+	text-decoration: none;
+}
+#person_list li:hover{
+	background-color: #007bff;
+}
+#Investigate_Header{
+	background:transparent url('../mpf/investigate.webp') no-repeat center center /cover;
+	width:100%;
+	height:50vh;
+	color:white;
+	display: table
+}
+/*search box css start here*/
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: absolute;
+        width:100%;
+        bottom: 0;
+        background: rgba(26, 70, 104, 0.51);
+    }
+    .carousel-inner > .carousel-item, .carousel-inner > .carousel-item > img{
+   		height: 50vh;
+}
+}
+
+@media (max-width: 992px){
+    .search-sec{
+        position: absolute;
+        bottom:0;
+        background: rgba(26, 70, 104, 0.51);
+    }
+    .carousel-inner > .carousel-item, .carousel-inner > .carousel-item > img{
+   		height: 80vh;
+}
+}
+#person_search_pageForm{
+    position:relative;
+}
+#person_search_header{
+    background:transparent url('../mpf/search.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table
+}
+#SorryPage{
+    margin:auto;
+}
+#article_header{
+    background:transparent url('../mpf/article.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table
+}
+#article_single{
+   background:transparent url('../mpf/article_single.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table 
+}
+#Edit_Article_Header{
+    background:transparent url('../uploads/article/flower.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table 
+}
+.services .media{
+    padding:16px;
+}
+.services .media:hover{
+    box-shadow: 0 0 3px blue, 0 0 5px #0000FF;
+}
+#Services_Header{
+    background:transparent url('../mpf/services.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table 
+}
+#About_Header{
+    background:transparent url('../mpf/about.webp') no-repeat center center /cover;
+    width:100%;
+    height:50vh;
+    color:white;
+    display: table 
+}

@@ -1,0 +1,60 @@
+doctype html
+html
+	head
+		title Missing Person Finder
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		link(rel='icon', href='/mpf/logoMPF.png', type='image/gif', sizes='16x16')
+		link(rel="stylesheet" href="/css/style.css")
+		link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
+
+
+
+	body.bg4
+		nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+			.container-xl.fixed-top.bg-dark
+				a.navbar-brand(href='/') MissingPersonFinder
+				button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample07XL', aria-controls='navbarsExample07XL', aria-expanded='false', aria-label='Toggle navigation')
+					span.navbar-toggler-icon
+				#navbarsExample07XL.collapse.navbar-collapse
+					ul.navbar-nav.mr-auto
+						li.nav-item.active
+							a.nav-link(href='/')
+								| Home 
+								span.sr-only (current)
+						if user
+							li.nav-item
+								a.nav-link(href='/articles/add') Add Article
+							li.nav-item
+								a.nav-link(href='/person/add/missing') Add MP
+							li.nav-item
+								a.nav-link(href='/person/edit/missing/'+user._id ) Edit MP
+							li.nav-item
+								a.nav-link(href="/services") Services
+							li.nav-item
+								a.nav-link(href="/about") About
+						else
+							li.nav-item
+								a.nav-link(href='/users/register') Register
+							li.nav-item
+								a.nav-link(href='/users/login') Login
+					ul.navbar-nav.ml-auto
+						li.nav-item.dropdown.btn-primary
+							a#dropdown07XL.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-expanded='false') Account
+							.dropdown-menu(aria-labelledby='dropdown07XL')
+								a.dropdown-item(href='/users/profile') Profile
+								a.dropdown-item(href='/users/logout') Logout
+		#header
+			block header
+		.container#page_container
+			!= messages('message', locals)
+			if errors
+				each error, i in errors
+					div(class="alert alert-danger") #{error.msg}
+			block content
+			br
+		footer 
+			p(style="margin:0") Copyright &copy; 2020 Missing Person Finder
+		script(src="/bower_components/jquery/dist/jquery.js")
+		script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+		script(src="/js/main.js")

@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		title Missing Person Finder
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		link(rel='icon', href='/mpf/logoMPF.png', type='image/gif', sizes='16x16')
+		link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+		link(rel="stylesheet" href="/css/style.css")
+
+	body.bg1
+		.container#page_container
+			!= messages('message', locals)
+			if errors
+				each error, i in errors
+					div(class="alert alert-danger") #{error.msg}
+			block content
+			br
+		footer 
+			p(style="margin:0") Copyright &copy; 2020 Missing Person Finder
+script(src="/bower_components/jquery/dist/jquery.js")
+script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+script(src="/js/main.js")

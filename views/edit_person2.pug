@@ -1,0 +1,108 @@
+extends layout
+
+block header
+	#AMP_header
+		h1(style="display:table-cell;text-align: center").align-middle #{title}
+
+block content
+	h1 Edit Person
+	.bg-light.p-4
+		form(method='POST', action='/person/edit/'+person._id enctype="multipart/form-data")
+			#form-group
+				label Name*:
+				input.form-control(name="name", type='text' value=person.Name)
+			#form-group
+				label Gender*:
+				select.form-control(name="gender" id="gender")
+					option(value="male") Male
+					option(value="female") Female
+					option(value="na") Not Applicable
+			#form-group
+				label Mental Status*:
+				select.form-control(name="mentalStatus" id="mentalStatus")
+					option(value="disorder") Mental Disorder
+					option(value="fine") No Mental Issues
+					option(value="na") Not Applicable
+			#form-group
+				label Body Type*:
+				select.form-control(name="body" id="body")
+					option(value="ectomorph") Ectomorph
+					option(value="endomorph") Endomorph
+					option(value="mesomorph") Mesomorph
+			#form-group
+				label Age (years)*:
+				input.form-control(name="age", type='number' value=person.Age)
+			#form-group
+				label Weight (Kg):
+				input.form-control(name="weight", type='number' value=person.Weight)
+			#form-group
+				label Height (cm)*:
+				input.form-control(name="height", type='number' value=person.Height)
+			#form-group
+				label Skin Color*:
+				select.form-control(name="skinColor" id="skinColor")
+					option(value="light") Light
+					option(value="fair") Fair
+					option(value="medium") Medium
+					option(value="olive") Olive
+					option(value="tan") Tan
+					option(value="brown") Brown
+					option(value="dark") Dark Brown
+					option(value="black") Black
+			#form-group
+				label Eye Color*:
+				select.form-control(name="eyeColor" id="eyeColor")
+					option(value="amber") Amber
+					option(value="blue") Blue
+					option(value="brown") Brown
+					option(value="gray") Gray
+					option(value="green") Green
+					option(value="hazel") Hazel
+					option(value="red") Red and Violet
+			#form-group
+				label Hair*:
+				select.form-control(name="hair" id="hair")
+					option(value="straight") Straight
+					option(value="wavy") Wavy
+					option(value="curly") Curly
+					option(value="coily") Coily
+					option(value="bold") Bold
+			#form-group
+				label Country*:
+				input.form-control(name="country", type='text' value=person.Country)
+			#form-group
+				label City*:
+				input.form-control(name="city", type='text' value=person.City)
+			#form-group
+				label Current Status*:
+				select.form-control(name="currentStatus" id="currentStatus")
+					option(value="missing") Missing
+					option(value="found") Found
+			#form-group
+				label Description:
+				textarea.form-control(name="description")=person.Description
+			.form-group
+				label Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			.row
+				.col-sm-12
+					.preview-images
+						if person.Image === null
+							if person.Gender == "female"
+								img(src="/mpf/missing_female.png")#Profile_Image
+							else
+								img(src="/mpf/missing_male.jpg")#Profile_Image
+						else
+							img(src="/uploads/missing/"+person.Image)#Profile_Image
+			br
+			input(type="text" value=person.Image name="fileCheck" style="display:none")
+
+			input.btn.btn-primary(type='submit',value='Submit')
+	script
+		document.getElementById("gender").value ='#{person.Gender}';
+		document.getElementById("mentalStatus").value ='#{person.MentalStatus}';
+		document.getElementById("body").value ='#{person.Body}';
+		document.getElementById("skinColor").value ='#{person.SkinColor}';
+		document.getElementById("eyeColor").value ='#{person.EyeColor}';
+		document.getElementById("hair").value ='#{person.Hair}';
+		document.getElementById("currentStatus").value ='#{person.CurrentStatus}';

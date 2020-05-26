@@ -1,0 +1,31 @@
+extends layout
+
+block header
+	#Edit_Article_Header
+		h1(style="display:table-cell;text-align: center").align-middle Edit Article
+
+block content
+	h1 Edit Article
+	.bg-light.p-4
+		form(method='POST', action='/articles/edit/'+article._id enctype="multipart/form-data")
+			#form-group
+				label Title:
+				input.form-control(name="title", type='text' value=article.title)
+			#form-group
+				label Body:
+				textarea.form-control(name="body" )=article.body
+			.form-group
+				label Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			.row
+				.col-sm-12
+					.preview-images
+						if article.file == null
+							img(src="/uploads/article/noimage.webp")#Profile_Image
+						else
+							img(src="/uploads/article/"+article.file)#Profile_Image
+			br
+			input(type="text" value=article.file name="fileCheck" style="display:none")
+
+			br
+			input.btn.btn-primary(type='submit',value='Submit')

@@ -1,0 +1,47 @@
+extends layout
+
+block header
+	#Profile_header
+		h1(style="display:table-cell;text-align: center").align-middle Hello #{user.name}
+block content
+	h1 Update Profile
+	.bg-dark.p-4
+		if Photoerror
+			div(class="alert alert-danger") #{Photoerror}
+		table.table.table-hover.table-light
+			tbody
+				tr
+					td Articles Posted
+					td
+						span.badge.badge-pill.badge-info #{user.Articles}
+				tr
+					td Missing Person Added
+					td
+						span.badge.badge-pill.badge-info #{user.MissingPerson}
+		form(method='POST', action='/users/profile/'+user._id enctype="multipart/form-data")
+			#form-group
+				label Name*:
+				input.form-control(name="name", type='text' value=user.name)
+			#form-group
+				label Email*:
+				input.form-control(name="email", type='text' value=user.email)
+			#form-group
+				label Contact Number*:
+				input.form-control(name="contact", type='text' value=user.contact)
+			#form-group
+				label Password*:
+				input.form-control(name="password", type='password' placeholder="Change Password or Confirm Previous Password to Update Profile")
+			#form-group
+				label Confirm Password*:
+				input.form-control(name="password2", type='text')
+			#form-group
+				label Profile Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			.row
+				.col-sm-12
+					.preview-images
+						img(src="/uploads/"+user.file id="Profile_Image")
+			br
+			input.btn.btn-primary(type='submit',value='Update')
+		br
+		a(href="/" type="button"  role="button" aria-pressed="true" style="color:white").btn.btn-danger Discard

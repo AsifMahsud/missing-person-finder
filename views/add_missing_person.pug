@@ -1,0 +1,97 @@
+extends layout
+
+block header
+	#AMP_header
+		h1(style="display:table-cell;text-align: center").align-middle Hi #{user.name}
+
+block content
+	if Photoerror
+		div(class="alert alert-danger") #{Photoerror}
+	h1 Add Missing Person
+	.bg-light.p-4
+		form(method='POST', action='/person/missing/'+user._id enctype="multipart/form-data")
+			#form-group
+				label Name*:
+				input.form-control(name="name", type='text')
+			#form-group
+				label Gender*:
+				select.form-control(name="gender")
+					option(value="male" selected) Male
+					option(value="female") Female
+					option(value="na") Not Applicable
+			#form-group
+				label Mental Status*:
+				select.form-control(name="mentalStatus")
+					option(value="disorder" selected) Mental Disorder
+					option(value="fine") No Mental Issues
+					option(value="na") Not Applicable
+			#form-group
+				label Body Type*:
+				select.form-control(name="body")
+					option(value="ectomorph" selected) Ectomorph
+					option(value="endomorph") Endomorph
+					option(value="mesomorph") Mesomorph
+			#form-group
+				label Age (years)*:
+				input.form-control(name="age", type='number' value=22)
+			#form-group
+				label Weight (Kg):
+				input.form-control(name="weight", type='number' value=55)
+			#form-group
+				label Height (cm)*:
+				input.form-control(name="height", type='number' value=150)
+			#form-group
+				label Skin Color*:
+				select.form-control(name="skinColor")
+					option(value="light" selected) Light
+					option(value="fair") Fair
+					option(value="medium") Medium
+					option(value="olive") Olive
+					option(value="tan") Tan
+					option(value="brown") Brown
+					option(value="dark") Dark Brown
+					option(value="black") Black
+			#form-group
+				label Eye Color*:
+				select.form-control(name="eyeColor")
+					option(value="amber" selected) Amber
+					option(value="blue") Blue
+					option(value="brown") Brown
+					option(value="gray") Gray
+					option(value="green") Green
+					option(value="hazel") Hazel
+					option(value="red") Red and Violet
+			#form-group
+				label Hair*:
+				select.form-control(name="hair")
+					option(value="straight" selected) Straight
+					option(value="wavy") Wavy
+					option(value="curly") Curly
+					option(value="coily") Coily
+					option(value="bold") Bold
+			#form-group
+				label Country*:
+				input.form-control(name="country", type='text')
+			#form-group
+				label City*:
+				input.form-control(name="city", type='text')
+			#form-group
+				label Date of Missing:
+				input.form-control(name="dateOfMissing", type='date')
+			#form-group
+				label Current Status*:
+				select.form-control(name="currentStatus")
+					option(value="missing" selected) Missing
+					option(value="found") Found
+			#form-group
+				label Description:
+				textarea.form-control(name="description")
+			.form-group
+				label Image
+				input#input-files.form-control-file.border(type='file', name='file')
+			.row
+				.col-sm-12
+					.preview-images
+						img#Profile_Image
+			br
+			input.btn.btn-primary(type='submit',value='Submit')

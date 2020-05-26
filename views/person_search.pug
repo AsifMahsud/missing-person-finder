@@ -1,0 +1,108 @@
+extends layout
+
+block header
+	-var x = person.length -1;
+	#person_search_header
+		h1(style="display:table-cell;text-align: center").align-middle Search Results
+	if x >=0
+		section.align-middle.search-sec#person_search_pageForm
+					.container
+						form(action='/person/person_search/', method='post', novalidate='novalidate')
+							.row
+								.col-lg-12
+									.row
+										.col-lg-3.col-md-3.col-sm-12
+											input.form-control.search-slt(type='text', placeholder='Name' name="name")
+										.col-lg-3.col-md-3.col-sm-12
+											input.form-control.search-slt(type='text', placeholder='Country' name="country")
+										.col-lg-3.col-md-3.col-sm-12
+											select.form-control.search-slt(name="gender")
+												option(value="gender" selected) Gender
+												option(value="male") Male
+												option(value="female") Female
+										.col-lg-3.col-md-3.col-sm-12.p-0
+												button.btn.btn-primary.wrn-btn(type='submit' ) Search
+
+block content
+	h1 #{title}
+	- var n = person.length -1;
+	.bg-light.p-4
+		if n >= 0
+			.card-deck
+				.row
+					if n < 4 
+						while n > 0
+							.card.bg-dark
+									if person[n].Image==undefined
+										if person[n].Gender=="male"
+											img.card-img-top(src='/mpf/missing_male.jpg', alt=person[n].Name)
+										else
+											img.card-img-top(src='/mpf/missing_female.png', alt=person[n].Name)
+									else
+										img.card-img-top(src='/uploads/missing/'+person[n].Image, alt=person[n].Name)
+									.card-body
+										h5.card-title=person[n].Name
+										ul.list-group.list-group-flush.myList
+											li.list-group-item.bg-dark.text-light Gender: #{person[n].Gender}
+											li.list-group-item.bg-dark.text-light Age: #{person[n].Age}
+											li.list-group-item.bg-dark.text-light Skin: #{person[n].SkinColor}
+											li.list-group-item.bg-dark.text-light Status: 
+												if person[n].CurrentStatus == "missing"
+													span.badge.badge-warning Missing
+												else
+													span.badge.badge-success Found	
+									.card-footer.bg-light
+										a(href="/person/"+person[n]._id style="color:white").btn.btn-primary
+											span.fa.fa-search
+											|  INVESTIGATE
+							-var n=n-1;
+					else
+						while n >= 0
+							.col-sm-12.col-md-6.col-lg-4.col-xl-3.mb-4
+								.card.bg-dark
+									if person[n].Image==undefined
+										if person[n].Gender=="male"
+											img.card-img-top(src='/mpf/missing_male.jpg', alt=person[n].Name)
+										else
+											img.card-img-top(src='/mpf/missing_female.png', alt=person[n].Name)
+									else
+										img.card-img-top(src='/uploads/missing/'+person[n].Image, alt=person[n].Name)
+									.card-body
+										h5.card-title=person[n].Name
+										ul.list-group.list-group-flush.myList
+											li.list-group-item.bg-dark.text-light Gender: #{person[n].Gender}
+											li.list-group-item.bg-dark.text-light Age: #{person[n].Age}
+											li.list-group-item.bg-dark.text-light Skin: #{person[n].SkinColor}
+											li.list-group-item.bg-dark.text-light Status: 
+												if person[n].CurrentStatus == "missing"
+													span.badge.badge-warning Missing
+												else
+													span.badge.badge-success Found	
+									.card-footer.bg-light
+										a(href="/person/"+person[n]._id style="color:white").btn.btn-primary
+											span.fa.fa-search
+											|  INVESTIGATE
+							-var n=n-1;
+		if x < 0
+			#SorryPage
+				img(src="/mpf/sad.webp" style="width:250px;height:250px;display:block;margin-left:auto;margin-right:auto")
+				h2(style="color:black").text-center SORRY, No Results Found... Please Search Again...
+				section.align-middle.search-sec#person_search_pageForm
+						.container
+							form(action='/person/person_search/', method='post', novalidate='novalidate')
+								.row
+									.col-lg-12
+										.row
+											.col-lg-3.col-md-3.col-sm-12
+												input.form-control.search-slt(type='text', placeholder='Name' name="name")
+											.col-lg-3.col-md-3.col-sm-12
+												input.form-control.search-slt(type='text', placeholder='Country' name="country")
+											.col-lg-3.col-md-3.col-sm-12
+												select.form-control.search-slt(name="gender")
+													option(value="gender" selected) Gender
+													option(value="male") Male
+													option(value="female") Female
+											.col-lg-3.col-md-3.col-sm-12.p-0
+													button.btn.btn-primary.wrn-btn(type='submit' ) Search
+				br
+				h6.text-center.text-info Tip: Try a different Combination... Leave all fields empty to show all Missing Person Results

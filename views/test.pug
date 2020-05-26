@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	section.search-sec
+		.container
+			form(action='#', method='post', novalidate='novalidate')
+				.row
+					.col-lg-12
+						.row
+							.col-lg-3.col-md-3.col-sm-12.p-0
+								input.form-control.search-slt(type='text', placeholder='Enter Pickup City')
+							.col-lg-3.col-md-3.col-sm-12.p-0
+								input.form-control.search-slt(type='text', placeholder='Enter Drop City')
+							.col-lg-3.col-md-3.col-sm-12.p-0
+								select#exampleFormControlSelect1.form-control.search-slt
+									option Select Vehicle
+									option Example one
+									option Example one
+									option Example one
+									option Example one
+									option Example one
+									option Example one
+							.col-lg-3.col-md-3.col-sm-12.p-0
+								button.btn.btn-danger.wrn-btn(type='button') Search

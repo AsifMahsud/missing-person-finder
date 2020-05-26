@@ -1,0 +1,29 @@
+{
+  "name": "missing-person-finder",
+  "version": "1.0.0",
+  "description": "Missing Person Finder Website built with Node.js for OOAD Semester Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "Muhammad Asif",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
+    "mongoose": "^5.9.14",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,17 @@
+extends unregistered_layout
+
+block content
+	h1 Login
+	.bg-light.p-4
+		form(method='POST', action='/users/login')
+			#form-group
+				label Username:
+				input.form-control(name="username", type='text')
+			#form-group
+				label Password:
+				input.form-control(name="password", type='password')
+			br
+			input.btn.btn-primary(type='submit',value='Submit')
+		br
+		h6(style="background:#E7DFDD; color:black;display:inline" class="p-2") New to MissingPersonFinder? 
+			a(href="/users/register") Create an account. 
